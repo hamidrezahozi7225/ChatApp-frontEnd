@@ -64,7 +64,10 @@ const SideBarModal = () => {
       >
         <div className='min-h-[200px] mt-8'>
           {users.map((item: IUser) => (
-            <div className=' flex p-2 rounded-md bg-gray-300  font-bold mx-2 justify-between items-center my-2'>
+            <div
+              key={item._id}
+              className=' flex p-2 rounded-md bg-gray-300  font-bold mx-2 justify-between items-center my-2'
+            >
               <div className='flex items-center'>
                 <div className='ml-2'>{item?.userName}</div>
               </div>
