@@ -1,16 +1,21 @@
+import CredentialsProvider from 'next-auth/providers/credentials';
 import { UserModel } from '@/components/model/UserModel';
 import connectDB from '@/components/utils/connectDB';
 import { comparePassword } from '@/components/utils/helper';
-import NextAuth from 'next-auth';
-import CredentialsProvider from 'next-auth/providers/credentials';
+import { AuthOptions, SessionStrategy } from 'next-auth';
 
-export const authOptions = {
-  session: { strategy: 'jwt' },
+export const authOptions: AuthOptions = {
+  session: { strategy: 'jwt' as SessionStrategy },
   secret: process.env.AUTH_SECRET,
   providers: [
     CredentialsProvider({
+      name: 'credentials',
+      credentials: {},
       async authorize(credentials) {
-        const { email, password } = credentials;
+        const { email, password } = credentials as {
+          email: string;
+          password: string;
+        };
 
         try {
           await connectDB();
@@ -31,12 +36,8 @@ export const authOptions = {
           throw new Error('ایمیل یا رمز عبور اشتباه است');
         }
 
-        return { email: user.email, status: '200' };
+        return { email: user.email, status: '200', id: '1' };
       },
     }),
   ],
 };
-
-const handler = NextAuth(authOptions);
-
-export default handler;
