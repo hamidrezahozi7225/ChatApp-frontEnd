@@ -2,32 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer base {
+  html {
+    @apply scroll-smooth;
   }
 }
 
+* {
+  box-sizing: border-box;
+  /* height: 100%; */
+}
+html {
+  height: 100%;
+}
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #f2f2f2;
+}
+.Toastify__toast {
+  height: fit-content;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+ul.ant-dropdown-menu.ant-dropdown-menu-root.ant-dropdown-menu-vertical.ant-dropdown-menu-light.css-dev-only-do-not-override-1uq9j6g {
+  height: fit-content;
+}
+
+.rtl-grid {
+  direction: rtl;
+}
+
+.btn-hover:hover {
+  background-color: inherit !important;
 }
