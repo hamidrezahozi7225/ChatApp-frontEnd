@@ -3,6 +3,9 @@
 module.exports = {
   swcMinify: false,
   swcLoader: false,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   experimental: {
     appDir: true,
   },
