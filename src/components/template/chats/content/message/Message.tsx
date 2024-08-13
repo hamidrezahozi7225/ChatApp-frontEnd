@@ -1,7 +1,6 @@
 import { IMessage } from '@/components/interface/types';
 import { getMessages } from '@/components/services/service';
 import Socket from '@/components/utils/socket';
-import { set } from 'mongoose';
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 

@@ -3,6 +3,7 @@ import { Button, Input } from 'antd';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import { useMediaQuery } from 'react-responsive';
 interface IProps {
   userInput: IInputAuth[];
   title: string;
@@ -25,10 +26,17 @@ const Auth = ({
     setUserData((userData: ILogin) => ({ ...userData, [name]: value }));
   };
 
+  const isTabletOrMobiled = useMediaQuery({ query: '(max-width: 676px)' });
+  console.log('isTabletOrMobiled', isTabletOrMobiled);
+
   return (
     <div className='flex justify-center items-center h-full w-full'>
       <div className='flex rounded-md p-3 h-3/4 justify-content-center shadow-2xl align-items-center flex-row  w-3/4'>
-        <div className='w-2/4 flex flex-col gap-1'>
+        <div
+          className={`${
+            isTabletOrMobiled ? 'w-full' : 'w-2/4'
+          } flex flex-col gap-1`}
+        >
           <h2 className='text-center h-fit font-bold'>{title}</h2>
           <div className='flex flex-col grow h-fit m-3'>
             {userInput.map((user: IInputAuth) => (
@@ -76,9 +84,11 @@ const Auth = ({
             )}
           </div>
         </div>
-        <div className='w-2/4 bg-slate-300 flex justify-center items-center rounded-sm'>
-          <Image src='/chat.png' alt='chat app' width={200} height={300} />
-        </div>
+        {!isTabletOrMobiled && (
+          <div className='w-2/4 bg-slate-300 flex justify-center items-center rounded-sm'>
+            <Image src='/chat.png' alt='chat app' width={200} height={300} />
+          </div>
+        )}
       </div>
     </div>
   );

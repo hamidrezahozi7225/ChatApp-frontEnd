@@ -5,7 +5,6 @@ import Sendmessage from './sendmessage/Sendmessage';
 import { useSelector } from 'react-redux';
 import lottiejson from '../../../module/lottie/myLottie.json';
 import Lottie from 'react-lottie-player';
-import { IMessage } from '@/components/interface/types';
 
 const Content = ({
   setMobile,
