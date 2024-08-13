@@ -5,16 +5,12 @@ import NextAuth, { SessionStrategy } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
 export const authOptions = {
-  session: { strategy: 'jwt' as SessionStrategy },
+  session: { strategy: 'jwt' },
   secret: process.env.AUTH_SECRET,
   providers: [
     CredentialsProvider({
-      //@ts-ignore
       async authorize(credentials) {
-        const { email, password } = credentials as {
-          email: string;
-          password: string;
-        };
+        const { email, password } = credentials;
 
         try {
           await connectDB();
