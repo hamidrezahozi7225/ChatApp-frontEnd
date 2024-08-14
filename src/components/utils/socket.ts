@@ -1,5 +1,5 @@
 const { io } = require('socket.io-client');
 
-const Socket = io('https://chat-app-backend-beige-three.vercel.app/');
+const Socket = io('https://chatapp-backend-production-3645.up.railway.app/');
 
 export default Socket;
